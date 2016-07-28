@@ -13,7 +13,7 @@ namespace snake
         {
             Console.SetBufferSize(80, 25);
 
-            //Отрисовка рамочки
+            /*Отрисовка рамочки
             HorizontalLine upline = new HorizontalLine(0, 78, 0, '+');
             HorizontalLine downline = new HorizontalLine(0, 78, 24, '+');
             VerticalLine leftline = new VerticalLine(0, 24, 0, '+');
@@ -21,15 +21,35 @@ namespace snake
             upline.Drow();
             downline.Drow();
             leftline.Drow();
-            rightline.Drow();
+            rightline.Drow();*/
+
+            VerticalLine vl = new VerticalLine(0, 10, 5, '%');
+            Drow(vl);
 
             //Отрисовка точек
             Point p = new Point(4, 5, '*');
-            p.Draw();
-            Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Drow();
+            Figure fSnake = new Snake(p, 4, Direction.RIGHT);
+            Drow(fSnake);
+            Snake snake = (Snake) fSnake;
 
-            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
+
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fSnake);
+            figures.Add(vl);
+            figures.Add(hl);
+
+            foreach (var f in figures)
+            {
+                f.Drow();
+            }
+        }
+        static void Drow(Figure figure)
+        {
+            figure.Drow();
+        }
+
+          /*  FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
@@ -45,7 +65,7 @@ namespace snake
                 {
                     snake.Move();
                 }
-                Thread.Sleep(200);
+                Thread.Sleep(150);
 
                 if (Console.KeyAvailable)
                     {
@@ -53,7 +73,7 @@ namespace snake
                         snake.HandleKey(key.Key);
                     }
                 }
-            }
+            }*/
         }
     }
 

@@ -10,7 +10,7 @@ namespace snake
     {
        protected List<Point> pList;
 
-        public void Drow()
+        public virtual void Drow()
         {
             foreach (Point p in pList)
             {

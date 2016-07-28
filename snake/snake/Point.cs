@@ -51,18 +51,25 @@ namespace snake
             }
         }
 
-        internal void Clear()
+        public bool IsHit(Point p)
         {
-            sym = ' ';
-            Draw();
-        }
+            return p.x == this.x && p.y == this.y;      
+       }
 
         public void Draw()
         {
 
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
-         }
+        }
+
+        internal void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
+
+        
         public override string ToString()
         {
             return x + "," + "," + sym;

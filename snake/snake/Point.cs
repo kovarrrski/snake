@@ -50,6 +50,13 @@ namespace snake
                 x = x - offset;
             }
         }
+
+        internal void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
+
         public void Draw()
         {
 
